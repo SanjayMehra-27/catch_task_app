@@ -6,7 +6,8 @@ import 'package:get/get.dart';
 void main() {
   runApp(
     GetMaterialApp(
-      title: "Application",
+      debugShowCheckedModeBanner: false,
+      title: "Catch-Task App",
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
     ),
