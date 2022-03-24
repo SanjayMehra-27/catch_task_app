@@ -24,7 +24,6 @@ class CreateTaskPage extends StatelessWidget {
         ),
       ),
       body: SafeArea(
-        maintainBottomViewPadding: true,
         child: CreateTaskStepper(),
       ),
     );

@@ -1,8 +1,12 @@
 import 'package:catch_task_app/app/modules/create_task/widgets/create-task-stepper/controller/create_task_stepper.controller.dart';
+import 'package:catch_task_app/app/modules/create_task/widgets/task_budget/controller/enter_task_budget_conrollert.dart';
+import 'package:catch_task_app/app/modules/create_task/widgets/task_budget/enter_task_budget_widget.dart';
 import 'package:catch_task_app/app/modules/create_task/widgets/task_date_time/enter_task_date_time_widget.dart';
 import 'package:catch_task_app/app/modules/create_task/widgets/task_details/enter_task_details_widget.dart';
 import 'package:catch_task_app/app/widgets/buttons/rounded/primary_rounded_btn.dart';
 import 'package:catch_task_app/app/widgets/values/app_colors.dart';
+import 'package:catch_task_app/app/widgets/values/app_values.dart';
+import 'package:catch_task_app/app/widgets/values/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -28,7 +32,6 @@ class _CreateTaskStepperState extends State<CreateTaskStepper> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 16),
       decoration: BoxDecoration(
         color: AppColors.appWhite02,
         borderRadius: BorderRadius.circular(20),
@@ -42,12 +45,79 @@ class _CreateTaskStepperState extends State<CreateTaskStepper> {
               builder: (controller) => Stepper(
                 controlsBuilder:
                     (BuildContext context, ControlsDetails details) {
-                  return PrimaryRoundedBtn(
-                    labelText: 'Continue',
-                    fontSize: 18,
-                    height: 50,
-                    onTap: details.onStepContinue,
-                  );
+                  return details.currentStep == 2
+                      ? Container(
+                          alignment: Alignment.bottomCenter,
+                          width: Get.width,
+                          padding: EdgeInsets.symmetric(
+                            vertical: AppValues.padding_20,
+                          ),
+                          decoration: BoxDecoration(
+                            color: AppColors.lightGreyColor,
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(20),
+                              topRight: Radius.circular(20),
+                            ),
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text('Estimated Budget', style: cardTitleStyle),
+                              Text('₹ 120', style: cardTitleStyle),
+                              SizedBox(height: 20),
+                              PrimaryRoundedBtn(
+                                labelText: 'Post Task',
+                                fontSize: 18,
+                                height: 50,
+                                width: Get.width / 1.5,
+                                onTap: () {
+                                  Get.dialog(
+                                    AlertDialog(
+                                      buttonPadding: EdgeInsets.all(20),
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(20),
+                                      ),
+                                      title: Text('Do you want to continue ?'),
+                                      alignment: Alignment.center,
+                                      content: Text(
+                                          '₹ ${Get.find<EnterTaskBudgetController>().taskBudgetController.value.text}',
+                                          textAlign: TextAlign.center,
+                                          style: inputFieldLabelStyle.copyWith(
+                                              color: AppColors.textColorPrimary.withOpacity(0.6),
+                                              fontSize: 30)),
+                                              actionsAlignment:MainAxisAlignment.spaceBetween,
+                                      actions: [
+                                        ElevatedButton(
+                                          style: ElevatedButton.styleFrom(
+                                            primary: AppColors.disabledButtonBgColor,
+                                            padding: EdgeInsets.symmetric(horizontal: 40,)                                          ),
+                                          onPressed: () {
+                                            Get.back();
+                                          },
+                                          child: Text('Cancel'),
+                                        ),
+                                        ElevatedButton(
+                                          style: ElevatedButton.styleFrom(
+                                            padding: EdgeInsets.symmetric(horizontal: 40,)),  
+                                          onPressed: () {
+                                            Get.back();
+                                          },
+                                          child: Text('Confirm'),
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                },
+                              ),
+                              SizedBox(height: 20),
+                            ],
+                          ))
+                      : PrimaryRoundedBtn(
+                          labelText: 'Continue',
+                          fontSize: 18,
+                          height: 50,
+                          onTap: details.onStepContinue,
+                        );
                 },
                 type: controller.stepperType,
                 physics: ScrollPhysics(),
@@ -75,14 +145,7 @@ class _CreateTaskStepperState extends State<CreateTaskStepper> {
                   ),
                   Step(
                     title: new Text('Budget'),
-                    content: Column(
-                      children: <Widget>[
-                        TextFormField(
-                          decoration:
-                              InputDecoration(labelText: 'Mobile Number'),
-                        ),
-                      ],
-                    ),
+                    content: EnterTaskBudgetWidget(),
                     isActive: controller.currentStep >= 0,
                     state: controller.currentStep >= 2
                         ? StepState.complete
