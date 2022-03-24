@@ -10,6 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   get: 4.6.1
+  intl: ^0.17.0
 
 dev_dependencies:
   csc_picker: ^0.2.6
