@@ -19,6 +19,7 @@ dev_dependencies:
   flutter_switch: ^0.3.2
   flutter_test:
     sdk: flutter
+  flutter_toggle_tab: ^1.1.7
 
 flutter:
   uses-material-design: true
