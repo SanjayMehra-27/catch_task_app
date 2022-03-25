@@ -1,8 +1,4 @@
 import 'package:catch_task_app/app/modules/browse_task/model/task/task.model.dart';
-import 'package:catch_task_app/app/modules/browse_task/widgets/all_tasks/all_tasks_widget.dart';
-import 'package:catch_task_app/app/modules/browse_task/widgets/my_pins_task/my_pins_tasks_widget.dart';
-import 'package:catch_task_app/app/modules/browse_task/widgets/suggested_task/suggested_task_widget.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 enum TaskTab {
