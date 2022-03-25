@@ -28,16 +28,15 @@ class BrowseTaskPage extends StatelessWidget {
       ),
       body: SafeArea(
         child: Container(
+          padding: EdgeInsets.all(20),
           child: Column(
             children: [
               // todo: add rounded rect tabs for [All Tasks, My Pins, Suggested]
-              // Here default theme colors are used for activeBgColor, activeFgColor, inactiveBgColor and inactiveFgColor
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Obx(
                     () => FlutterToggleTab(
-                      // width in percent, to set full width just set to 100
                       width: 80,
                       borderRadius: 30,
                       height: 40,
@@ -64,11 +63,24 @@ class BrowseTaskPage extends StatelessWidget {
                   ),
                 ],
               ),
+              // todo: add App Banner
+              Container(
+                margin: EdgeInsets.only(top: 20),
+                width: double.infinity,
+                color: AppColors.appWhite01,
+                child: Center(
+                  child: Image.asset(
+                    'assets/images/app_banner@test.png',
+                    fit: BoxFit.fitHeight,
+                    width: double.infinity,
+                  )
+                ),
+              ),
+
               // todo: toggle tab view
               Obx(() => 
               browseTaskController.getSelectedTabView()),
 
-              // todo: add banner
 
               // todo: add task list
             ],
