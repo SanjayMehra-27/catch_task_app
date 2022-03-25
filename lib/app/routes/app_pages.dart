@@ -1,4 +1,5 @@
 import 'package:catch_task_app/app/modules/browse_task/bindings/browse_task_binding.dart';
+import 'package:catch_task_app/app/modules/browse_task/model/task/task.model.dart';
 import 'package:catch_task_app/app/modules/browse_task/views/browse_task_view.dart';
 import 'package:catch_task_app/app/modules/create_task/bindings/create_task_binding.dart';
 import 'package:catch_task_app/app/modules/create_task/views/create_task_view.dart';
@@ -19,11 +20,6 @@ class AppPages {
       name: AppRoutes.BROWSE_TASK,
       page: () => BrowseTaskPage(),
       binding: BrowseTaskBinding(),
-    ),
-    GetPage(
-      name: AppRoutes.TASK_DETAILS,
-      page: () => TaskDetailsPage(),
-      binding: TaskDetailsBinding(),
     ),
   ];
 }

@@ -1,4 +1,5 @@
 import 'package:catch_task_app/app/modules/browse_task/model/task/task.model.dart';
+import 'package:catch_task_app/app/modules/browse_task/model/user/user.model.dart';
 import 'package:get/get.dart';
 
 enum TaskTab {
@@ -21,7 +22,12 @@ final List<TaskModel> allTasks = [
     category: 'category 1',
     dateTime: DateTime.now(),
     offersCount: 6,
-    imageUrl: 'https://picsum.photos/200/300',
+    imageUrl: 'https://picsum.photos/200/300', 
+    user: UserModel(
+      id: '1',
+      name: 'user 1',
+      imageUrl: 'https://picsum.photos/200/300',
+    ),
   ),
   TaskModel(
     id: '2',
@@ -35,7 +41,12 @@ final List<TaskModel> allTasks = [
     category: 'category 2',
     dateTime: DateTime.now(),
     offersCount: 10,
-    imageUrl: 'https://picsum.photos/200/300',
+    imageUrl: 'https://picsum.photos/200/300', 
+    user: UserModel(
+      id: '2',
+      name: 'user 2',
+      imageUrl: 'https://picsum.photos/200/300',
+    )
   ),
   TaskModel(
     id: '3',
@@ -50,6 +61,11 @@ final List<TaskModel> allTasks = [
     dateTime: DateTime.now(),
     offersCount: 16,
     imageUrl: 'https://picsum.photos/200/300',
+    user: UserModel(
+      id: '3',
+      name: 'user 3',
+      imageUrl: 'https://picsum.photos/200/300',
+    )
   ),
   TaskModel(
     id: '4',
@@ -64,6 +80,11 @@ final List<TaskModel> allTasks = [
     dateTime: DateTime.now(),
     offersCount: 4,
     imageUrl: 'https://picsum.photos/200/300',
+    user: UserModel(
+      id: '4',
+      name: 'user 4',
+      imageUrl: 'https://picsum.photos/200/300',
+    )
   ),
   TaskModel(
     id: '5',
@@ -78,6 +99,11 @@ final List<TaskModel> allTasks = [
     dateTime: DateTime.now(),
     offersCount: 2,
     imageUrl: 'https://picsum.photos/200/300',
+    user: UserModel(
+      id: '5',
+      name: 'user 5',
+      imageUrl: 'https://picsum.photos/200/300',
+    )
   ),
   TaskModel(
     id: '6',
@@ -92,6 +118,11 @@ final List<TaskModel> allTasks = [
     dateTime: DateTime.now(),
     offersCount: 1,
     imageUrl: 'https://picsum.photos/200/300',
+    user: UserModel(
+      id: '6',
+      name: 'user 6',
+      imageUrl: 'https://picsum.photos/200/300',
+    )
   ),
   TaskModel(
     id: '7',
@@ -106,6 +137,11 @@ final List<TaskModel> allTasks = [
     dateTime: DateTime.now(),
     offersCount: 30,
     imageUrl: 'https://picsum.photos/200/300',
+    user: UserModel(
+      id: '7',
+      name: 'user 7',
+      imageUrl: 'https://picsum.photos/200/300',
+    )
   ),
   TaskModel(
     id: '8',
@@ -120,6 +156,11 @@ final List<TaskModel> allTasks = [
     dateTime: DateTime.now(),
     offersCount: 40,
     imageUrl: 'https://picsum.photos/200/300',
+    user: UserModel(
+      id: '8',
+      name: 'user 8',
+      imageUrl: 'https://picsum.photos/200/300',
+    )
   ),
   TaskModel(
     id: '9',
@@ -134,6 +175,11 @@ final List<TaskModel> allTasks = [
     dateTime: DateTime.now(),
     offersCount: 20,
     imageUrl: 'https://picsum.photos/200/300',
+    user: UserModel(
+      id: '9',
+      name: 'user 9',
+      imageUrl: 'https://picsum.photos/200/300',
+    )
   ),
   TaskModel(
     id: '10',
@@ -148,6 +194,11 @@ final List<TaskModel> allTasks = [
     dateTime: DateTime.now(),
     offersCount: 10,
     imageUrl: 'https://picsum.photos/200/300',
+    user: UserModel(
+      id: '10',
+      name: 'user 10',
+      imageUrl: 'https://picsum.photos/200/300',
+    )
   ),
 ];
 

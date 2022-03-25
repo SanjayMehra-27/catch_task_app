@@ -1,3 +1,5 @@
+import 'package:catch_task_app/app/modules/browse_task/model/user/user.model.dart';
+
 class TaskModel {
   final String id;
   final String title;
@@ -11,6 +13,7 @@ class TaskModel {
   late bool isPinned;
   final int? offersCount;
   final bool? isRemoteOnly;
+  final UserModel user;
   TaskModel({
     required this.id,
     required this.title,
@@ -23,6 +26,7 @@ class TaskModel {
     required this.status,
     required this.isPinned,
     this.offersCount,
+    required this.user,
     this.isRemoteOnly = false,
   });
 }
