@@ -1,4 +1,5 @@
 import 'package:catch_task_app/app/modules/browse_task/controllers/browse_task_controller.dart';
+import 'package:catch_task_app/app/routes/app_routes.dart';
 import 'package:catch_task_app/app/widgets/values/app_colors.dart';
 import 'package:catch_task_app/app/widgets/values/app_values.dart';
 import 'package:catch_task_app/app/widgets/values/text_styles.dart';
@@ -109,6 +110,7 @@ class TaskTile extends StatelessWidget {
         ],
       ),
       onTap: () {
+       Get.toNamed(AppRoutes.TASK_DETAILS, arguments: task);
       },
     );
   }
