@@ -1,4 +1,6 @@
 import 'package:catch_task_app/app/modules/browse_task/controllers/browse_task_controller.dart';
+import 'package:catch_task_app/app/modules/browse_task/model/task/task.model.dart';
+import 'package:catch_task_app/app/modules/browse_task/widgets/task_tile/task_tile.dart';
 import 'package:catch_task_app/app/widgets/values/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -31,7 +33,7 @@ class BrowseTaskPage extends StatelessWidget {
           padding: EdgeInsets.all(20),
           child: Column(
             children: [
-              // todo: add rounded rect tabs for [All Tasks, My Pins, Suggested]
+              // ! Rounded rect tabs [All Tasks, My Pins, Suggested]
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -40,9 +42,7 @@ class BrowseTaskPage extends StatelessWidget {
                       width: 80,
                       borderRadius: 30,
                       height: 40,
-                      selectedBackgroundColors: [
-                        AppColors.appPrimaryColor
-                      ],
+                      selectedBackgroundColors: [AppColors.appPrimaryColor],
                       unSelectedBackgroundColors: [
                         AppColors.appWhite01,
                       ],
@@ -58,31 +58,37 @@ class BrowseTaskPage extends StatelessWidget {
                       selectedLabelIndex: (index) {
                         browseTaskController.setSelectedTabIndex(index);
                       },
-                      selectedIndex: browseTaskController.selectedTab.value.index,
+                      selectedIndex:
+                          browseTaskController.selectedTab.value.index,
                     ),
                   ),
                 ],
               ),
-              // todo: add App Banner
+              //! App Banner
               Container(
-                margin: EdgeInsets.only(top: 20),
+                margin: EdgeInsets.symmetric(vertical: 20),
                 width: double.infinity,
                 color: AppColors.appWhite01,
                 child: Center(
-                  child: Image.asset(
-                    'assets/images/app_banner@test.png',
-                    fit: BoxFit.fitHeight,
-                    width: double.infinity,
-                  )
-                ),
+                    child: Image.asset(
+                  'assets/images/app_banner@test.png',
+                  fit: BoxFit.fitHeight,
+                  width: double.infinity,
+                )),
               ),
 
-              // todo: toggle tab view
-              Obx(() => 
-              browseTaskController.getSelectedTabView()),
-
-
-              // todo: add task list
+              //! task list view based on selected tab [All Tasks, My Pins, Suggested]
+              Expanded(
+                  child: Obx(
+                () => ListView.separated(
+                    shrinkWrap: true,
+                    scrollDirection: Axis.vertical,
+                    itemBuilder: (context, index) => TaskTile(
+                          task: browseTaskController.tasks[index],
+                        ),
+                    separatorBuilder: (context, index) => SizedBox(height: 10),
+                    itemCount: browseTaskController.tasks.length),
+              ))  
             ],
           ),
         ),
