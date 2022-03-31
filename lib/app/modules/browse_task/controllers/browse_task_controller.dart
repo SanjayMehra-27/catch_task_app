@@ -1,3 +1,4 @@
+import 'package:catch_task_app/app/modules/browse_task/model/offer-received/offer_received.dart';
 import 'package:catch_task_app/app/modules/browse_task/model/task/task.model.dart';
 import 'package:catch_task_app/app/modules/browse_task/model/user/user.model.dart';
 import 'package:get/get.dart';
@@ -8,6 +9,57 @@ enum TaskTab {
   SUGGESTED,
 }
 
+final List<OfferReceived> offers= [
+      OfferReceived(
+        id: '1',
+        userName: 'Rahul Singh',
+        price: 5000,
+        message: 'lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem!',
+        dateTime: DateTime.now(),
+        rating: 4.5,
+      ),
+      OfferReceived(
+        id: '2',
+        userName: 'Krishna Singh',
+        price: 5000,
+        message: 'lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem!',
+        dateTime: DateTime.now(),
+        rating: 3.0,
+      ),
+      OfferReceived(
+        id: '3',
+        userName: 'Raj Singh',
+        price: 5000,
+        message: 'lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem!',
+        dateTime: DateTime.now(),
+        rating: 2.0,
+      ),
+      OfferReceived(
+        id: '4',
+        userName: 'Krunal shah',
+        price: 5000,
+        message: 'lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem!',
+        dateTime: DateTime.now(),
+        rating: 5.0,
+      ),
+      OfferReceived(
+        id: '5',
+        userName: 'Rajesh shah',
+        price: 5000,
+        message: 'message 5',
+        dateTime: DateTime.now(),
+        rating: 3.2,
+      ),
+      OfferReceived(
+        id: '6',
+        userName: 'Jay Sharma',
+        price: 5000,
+        message: 'lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem!',
+        dateTime: DateTime.now(),
+        rating: 1.0,
+      ),
+    ];
+
 /// dummy [TaskModel] data
 final List<TaskModel> allTasks = [
   TaskModel(
@@ -15,7 +67,7 @@ final List<TaskModel> allTasks = [
     title: 'task 1',
     isPinned: true,
     budget: 5000,
-    description: 'task 1 description',
+    description: "Quo ad sit voluptas totam. Culpa quam quibusdam. Dolorum nulla harum consectetur. Aut animi quas eum quia id dolores rerum recusandae. At consequatur dolores omnis nisi consectetur ea.Quia quibusdam nostrum accusamus exercitationem libero quibusdam. Nihil reiciendis ducimus est commodi omnis mollitia. Ut non consectetur eaque vel et enim et.Sed et rerum ut esse adipisci est sed fugiat. Et minus tenetur quia vel ut inventore. Praesentium labore eum magni veniam debitis asperiores rerum. Itaque minus consequatur quis. Occaecati quae quia praesentium.",
     isRemoteOnly: true,
     status: TaskStatus.OPEN,
     location: 'location 1',
@@ -28,6 +80,7 @@ final List<TaskModel> allTasks = [
       name: 'user 1',
       imageUrl: 'https://picsum.photos/200/300',
     ),
+    offers: offers,
   ),
   TaskModel(
     id: '2',
@@ -46,7 +99,8 @@ final List<TaskModel> allTasks = [
       id: '2',
       name: 'user 2',
       imageUrl: 'https://picsum.photos/200/300',
-    )
+    ),
+    offers: offers,
   ),
   TaskModel(
     id: '3',
@@ -65,7 +119,8 @@ final List<TaskModel> allTasks = [
       id: '3',
       name: 'user 3',
       imageUrl: 'https://picsum.photos/200/300',
-    )
+    ),
+    offers: offers,
   ),
   TaskModel(
     id: '4',
@@ -84,7 +139,8 @@ final List<TaskModel> allTasks = [
       id: '4',
       name: 'user 4',
       imageUrl: 'https://picsum.photos/200/300',
-    )
+    ),
+    offers: offers,
   ),
   TaskModel(
     id: '5',
@@ -103,7 +159,7 @@ final List<TaskModel> allTasks = [
       id: '5',
       name: 'user 5',
       imageUrl: 'https://picsum.photos/200/300',
-    )
+    ),offers: offers,
   ),
   TaskModel(
     id: '6',
@@ -122,7 +178,8 @@ final List<TaskModel> allTasks = [
       id: '6',
       name: 'user 6',
       imageUrl: 'https://picsum.photos/200/300',
-    )
+    ),
+    offers: offers,
   ),
   TaskModel(
     id: '7',
@@ -141,7 +198,8 @@ final List<TaskModel> allTasks = [
       id: '7',
       name: 'user 7',
       imageUrl: 'https://picsum.photos/200/300',
-    )
+    ),
+    offers: offers,
   ),
   TaskModel(
     id: '8',
@@ -160,7 +218,8 @@ final List<TaskModel> allTasks = [
       id: '8',
       name: 'user 8',
       imageUrl: 'https://picsum.photos/200/300',
-    )
+    ),
+    offers: offers,
   ),
   TaskModel(
     id: '9',
@@ -179,7 +238,8 @@ final List<TaskModel> allTasks = [
       id: '9',
       name: 'user 9',
       imageUrl: 'https://picsum.photos/200/300',
-    )
+    ),
+    offers: offers,
   ),
   TaskModel(
     id: '10',
@@ -198,7 +258,8 @@ final List<TaskModel> allTasks = [
       id: '10',
       name: 'user 10',
       imageUrl: 'https://picsum.photos/200/300',
-    )
+    ),
+    offers: offers,
   ),
 ];
 

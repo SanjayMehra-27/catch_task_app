@@ -1,3 +1,4 @@
+import 'package:catch_task_app/app/modules/browse_task/model/offer-received/offer_received.dart';
 import 'package:catch_task_app/app/modules/browse_task/model/user/user.model.dart';
 
 class TaskModel {
@@ -14,6 +15,7 @@ class TaskModel {
   final int? offersCount;
   final bool? isRemoteOnly;
   final UserModel user;
+  final List<OfferReceived> offers;
   TaskModel({
     required this.id,
     required this.title,
@@ -25,10 +27,12 @@ class TaskModel {
     required this.dateTime,
     required this.status,
     required this.isPinned,
+    required this.offers,
     this.offersCount,
     required this.user,
     this.isRemoteOnly = false,
   });
+
 }
 
 enum TaskStatus {
