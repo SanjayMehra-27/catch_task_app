@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 
 class CTInputField extends StatefulWidget {
   final TextEditingController? controller;
-  final String hint;
+  final String? hint;
+  final String? labelText;
   final int? maxLength;
   final TextInputType keyboard;
   final FocusNode? focusNode;
@@ -16,11 +17,13 @@ class CTInputField extends StatefulWidget {
   final double horizontalPadding;
   final Function? onValueChanged;
   final String? error;
+  final int? maxLines;
 
   const CTInputField(
       {Key? key,
       this.controller,
-      required this.hint,
+      this.hint,
+      this.labelText,
       this.maxLength,
       this.keyboard = TextInputType.text,
       this.focusNode,
@@ -28,8 +31,9 @@ class CTInputField extends StatefulWidget {
       this.isEnabled = true,
       this.onFinished,
       this.isPassword = false,
-      required this.horizontalPadding,
+      this.horizontalPadding = 0,
       this.onValueChanged,
+      this.maxLines,
       this.error})
       : super(key: key);
 
@@ -62,11 +66,12 @@ class CTInputFieldState extends State<CTInputField> {
             focusNode: widget.focusNode,
             keyboardType: widget.keyboard,
             obscureText: widget.isPassword,
+            maxLines: widget.maxLines,
 
             decoration: InputDecoration(
                 isDense: false,
                 filled: false,
-                enabledBorder:  OutlineInputBorder(
+                enabledBorder: OutlineInputBorder(
                   borderSide:
                       BorderSide(color: AppColors.textFieldBorder, width: 1.0),
                   borderRadius:
@@ -84,7 +89,9 @@ class CTInputFieldState extends State<CTInputField> {
                   borderRadius:
                       BorderRadius.all(Radius.circular(AppValues.radius_12)),
                 ),
-                labelText: widget.hint,
+                labelText: widget.labelText ?? widget.hint,
+                hintText: widget.hint,
+                alignLabelWithHint: true,
                 suffixIcon: !widget.suffixIcon.isEmpty
                     ? Image.asset(
                         widget.suffixIcon,
@@ -93,7 +100,7 @@ class CTInputFieldState extends State<CTInputField> {
                     : isChecked
                         ? const Icon(Icons.done)
                         : null,
-                labelStyle: textFiledHint14),
+                    ),
           ),
           error == null
               ? Container()

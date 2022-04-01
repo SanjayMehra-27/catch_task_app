@@ -65,7 +65,7 @@ class _CreateTaskStepperState extends State<CreateTaskStepper> {
                               Text('Estimated Budget', style: cardTitleStyle),
                               Text('₹ 120', style: cardTitleStyle),
                               SizedBox(height: 20),
-                              PrimaryRoundedBtn(
+                              PrimaryButton(
                                 labelText: 'Post Task',
                                 fontSize: 18,
                                 height: 50,
@@ -112,7 +112,7 @@ class _CreateTaskStepperState extends State<CreateTaskStepper> {
                               SizedBox(height: 20),
                             ],
                           ))
-                      : PrimaryRoundedBtn(
+                      : PrimaryButton(
                           labelText: 'Continue',
                           fontSize: 18,
                           height: 50,

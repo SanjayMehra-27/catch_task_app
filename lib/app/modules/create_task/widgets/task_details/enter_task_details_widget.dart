@@ -36,7 +36,8 @@ class _EnterTaskDetailsWidgetState extends State<EnterTaskDetailsWidget> {
           () => CTInputField(
               controller: controller.taskTitleController.value,
               hint: 'Title',
-              horizontalPadding: AppValues.padding_zero),
+              horizontalPadding: AppValues.padding_zero, 
+              labelText: 'Title',),
         ),
         DropdownPicker(
           horizontalPadding: AppValues.padding_zero,
@@ -50,9 +51,9 @@ class _EnterTaskDetailsWidgetState extends State<EnterTaskDetailsWidget> {
               controller: controller.taskDescriptionController.value,
               hint: 'Description',
               maxLength: 200,
-              horizontalPadding: AppValues.padding_zero),
+              horizontalPadding: AppValues.padding_zero, labelText: 'Description',),
         ),
-        PrimaryRoundedBtn(
+        PrimaryButton(
           labelText: 'Add Must Have',
           fontSize: 18,
           icon: Icon(Icons.add),
@@ -79,7 +80,7 @@ class _EnterTaskDetailsWidgetState extends State<EnterTaskDetailsWidget> {
         ),
         SizedBox(height: 20),
         // todo: Upload Image Button With Icon
-        PrimaryRoundedBtn(
+        PrimaryButton(
           labelText: 'Upload Image',
           fontSize: 18,
           width: double.infinity,

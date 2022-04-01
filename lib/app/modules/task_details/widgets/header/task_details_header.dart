@@ -1,4 +1,5 @@
 import 'package:catch_task_app/app/modules/browse_task/model/task/task.model.dart';
+import 'package:catch_task_app/app/modules/task_details/widgets/make-offer-dialog/make_offer_dialog.dart';
 import 'package:catch_task_app/app/widgets/buttons/rounded/primary_rounded_btn.dart';
 import 'package:catch_task_app/app/widgets/values/app_colors.dart';
 import 'package:catch_task_app/app/widgets/values/text_styles.dart';
@@ -42,12 +43,13 @@ class TaskDetailsHeaderWidget extends StatelessWidget {
                   textAlign: TextAlign.start,
                   style: boldTitleWhiteStyle.copyWith(
                       fontSize: 16, fontWeight: FontWeight.w500)),
-              PrimaryRoundedBtn(
+              PrimaryButton(
                 labelText: 'Make Offer',
                 color: AppColors.appYellow,
                 width: Get.width * 0.35,
                 height: Get.height * 0.05,
                 fontSize: 16,
+                onTap: () => Get.to(MakeOfferDialog(bidPrice: task.budget,), transition: Transition.downToUp, duration: Duration(seconds: 1)),
               )
             ],
           ),
