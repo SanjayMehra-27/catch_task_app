@@ -1,5 +1,7 @@
 import 'package:catch_task_app/app/modules/browse_task/controllers/browse_task_controller.dart';
 import 'package:catch_task_app/app/modules/browse_task/widgets/task_tile/task_tile.dart';
+import 'package:catch_task_app/app/modules/my_task/controllers/my_task_controller.dart';
+import 'package:catch_task_app/app/modules/my_task/widgets/sort_by/sort_by_widget.dart';
 import 'package:catch_task_app/app/widgets/values/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -9,23 +11,21 @@ class MyTaskPage extends StatelessWidget {
   MyTaskPage({Key? key}) : super(key: key);
 
   final BrowseTaskController browseTaskController = Get.find();
+  final MyTaskController myTaskController = Get.find();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
       extendBodyBehindAppBar: true,
+      floatingActionButton: SortByWidget(),
+      floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
       appBar: AppBar(
-        backgroundColor: AppColors.appBarTextColor,
+        // backgroundColor: AppColors.appBarTextColor,
         elevation: 0,
         title:
-            Text('Create Task', style: Theme.of(context).textTheme.headline6),
+            Text('Poster', style: Theme.of(context).textTheme.headline6),
         centerTitle: true,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back,
-              color: Theme.of(context).textTheme.headline6?.color),
-          onPressed: () => Get.back(),
-        ),
       ),
       body: SafeArea(
         child: Container(
@@ -53,7 +53,7 @@ class MyTaskPage extends StatelessWidget {
                           color: AppColors.textColorPrimary,
                           fontSize: 14,
                           fontWeight: FontWeight.w500),
-                      labels: ["All Tasks", "My Pins", "Suggested"],
+                      labels: ["My Tasks", "Assigned", "Completed"],
                       selectedLabelIndex: (index) {
                         browseTaskController.setSelectedTabIndex(index);
                       },
@@ -63,18 +63,7 @@ class MyTaskPage extends StatelessWidget {
                   ),
                 ],
               ),
-              //! App Banner
-              Container(
-                margin: EdgeInsets.symmetric(vertical: 20),
-                width: double.infinity,
-                color: AppColors.appWhite01,
-                child: Center(
-                    child: Image.asset(
-                  'assets/images/app_banner@test.png',
-                  fit: BoxFit.fitHeight,
-                  width: double.infinity,
-                )),
-              ),
+              SizedBox(height: 20),
 
               //! task list view based on selected tab [All Tasks, My Pins, Suggested]
               Expanded(

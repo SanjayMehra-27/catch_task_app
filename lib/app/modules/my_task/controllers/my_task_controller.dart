@@ -279,9 +279,15 @@ final List<TaskModel> suggestedTasks = [
   allTasks[9],
 ];
 
+enum MyTaskSortBy {
+  AS_POSTER,
+  AS_TASKER,
+}
+
 class MyTaskController extends GetxController {
   final selectedTab = TaskTab.ALL_TASKS.obs;
   final tasks = allTasks.obs;
+  final sortBy = MyTaskSortBy.AS_TASKER.obs;
 
   void setSelectedTabIndex(int index) {
     selectedTab.value = TaskTab.values[index];
@@ -305,5 +311,10 @@ class MyTaskController extends GetxController {
     print(task.id);
     task.isPinned = !task.isPinned;
     tasks.value = getSelectedTabView();
+  }
+
+  void showSortByList() {
+    // AS_POSTER, AS_TASKER
+    
   }
 }
