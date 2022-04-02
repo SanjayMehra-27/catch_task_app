@@ -8,9 +8,11 @@ import 'package:get/get.dart';
 
 class MakeOfferDialog extends StatefulWidget {
   final int bidPrice;
+  final Function(int) onConfirm;
   MakeOfferDialog({
     Key? key,
     required this.bidPrice,
+    required this.onConfirm,
   }) : super(key: key);
 
   @override
@@ -77,7 +79,7 @@ class _MakeOfferDialogState extends State<MakeOfferDialog> {
                       width: Get.width,
                       fontSize: 22,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      prefix: InkWell(
+                      suffix: InkWell(
                         onTap: () {
                           controller.onIncrement()  ;
                         },
@@ -86,7 +88,7 @@ class _MakeOfferDialogState extends State<MakeOfferDialog> {
                           color: AppColors.appWhite,
                         ),
                       ),
-                      suffix: InkWell(
+                      prefix: InkWell(
                         onTap: () {
                           controller.onDecrement();
                         },
@@ -118,7 +120,8 @@ class _MakeOfferDialogState extends State<MakeOfferDialog> {
                             width: Get.width,
                             fontSize: 16,
                             onTap: () {
-                              // controller.onMakeOffer();
+                              Get.back();
+                              widget.onConfirm(controller.offerBidPrice);
                             }),
                       ],
                     ),

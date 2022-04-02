@@ -1,4 +1,5 @@
 import 'package:catch_task_app/app/modules/browse_task/model/task/task.model.dart';
+import 'package:catch_task_app/app/modules/task_details/controllers/task_details_controller.dart';
 import 'package:catch_task_app/app/modules/task_details/widgets/make-offer-dialog/make_offer_dialog.dart';
 import 'package:catch_task_app/app/widgets/buttons/rounded/primary_rounded_btn.dart';
 import 'package:catch_task_app/app/widgets/values/app_colors.dart';
@@ -15,6 +16,8 @@ class TaskDetailsHeaderWidget extends StatelessWidget {
   }) : super(key: key);
 
   final TaskModel task;
+
+  TaskDetailsController get taskDetailsController => Get.find<TaskDetailsController>();
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +52,16 @@ class TaskDetailsHeaderWidget extends StatelessWidget {
                 width: Get.width * 0.35,
                 height: Get.height * 0.05,
                 fontSize: 16,
-                onTap: () => Get.to(MakeOfferDialog(bidPrice: task.budget,), transition: Transition.downToUp, duration: Duration(seconds: 1)),
+                onTap: () => Get.to(
+                    MakeOfferDialog(
+                      bidPrice: task.budget,
+                      onConfirm: (bidPrice) {
+                        taskDetailsController.confirmOfferDialog(bidPrice);
+          
+                      },
+                    ),
+                    transition: Transition.downToUp,
+                    duration: Duration(seconds: 1)),
               )
             ],
           ),
