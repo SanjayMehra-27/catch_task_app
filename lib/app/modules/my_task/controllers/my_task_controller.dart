@@ -1,6 +1,7 @@
 import 'package:catch_task_app/app/modules/browse_task/model/offer-received/offer_received.dart';
 import 'package:catch_task_app/app/modules/browse_task/model/task/task.model.dart';
 import 'package:catch_task_app/app/modules/browse_task/model/user/user.model.dart';
+import 'package:catch_task_app/app/modules/my_task/widgets/sort_by/controller/sort_by_controller.dart';
 import 'package:get/get.dart';
 
 enum TaskTab {
@@ -279,19 +280,17 @@ final List<TaskModel> suggestedTasks = [
   allTasks[9],
 ];
 
-enum MyTaskSortBy {
-  AS_POSTER,
-  AS_TASKER,
-}
 
 class MyTaskController extends GetxController {
   final selectedTab = TaskTab.ALL_TASKS.obs;
   final tasks = allTasks.obs;
-  final sortBy = MyTaskSortBy.AS_TASKER.obs;
-
   void setSelectedTabIndex(int index) {
     selectedTab.value = TaskTab.values[index];
     tasks.value = getSelectedTabView();
+  }
+  SortBy get selectedSortBy {
+    SortByController sortByController = Get.find();
+    return sortByController.selectedSortBy;
   }
 
   List<TaskModel> getSelectedTabView() {

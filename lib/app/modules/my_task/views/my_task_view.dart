@@ -23,8 +23,12 @@ class MyTaskPage extends StatelessWidget {
       appBar: AppBar(
         // backgroundColor: AppColors.appBarTextColor,
         elevation: 0,
-        title:
-            Text('Poster', style: Theme.of(context).textTheme.headline6),
+        title: Obx(() => AnimatedCrossFade(
+          crossFadeState: myTaskController.selectedSortBy.index  == 0 ? CrossFadeState.showSecond: CrossFadeState.showFirst,
+          duration: const Duration(milliseconds: 600),
+          firstChild: Text('Poster', style: Theme.of(context).textTheme.headline6),
+          secondChild: Text('Tasker', style: Theme.of(context).textTheme.headline6),
+          )),
         centerTitle: true,
       ),
       body: SafeArea(
@@ -32,7 +36,7 @@ class MyTaskPage extends StatelessWidget {
           padding: EdgeInsets.all(20),
           child: Column(
             children: [
-              // ! Rounded rect tabs [All Tasks, My Pins, Suggested]
+              // ! Rounded rect tabs [All Tasks,   My Pins, Suggested]
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -76,7 +80,7 @@ class MyTaskPage extends StatelessWidget {
                         ),
                     separatorBuilder: (context, index) => SizedBox(height: 10),
                     itemCount: browseTaskController.tasks.length),
-              ))  
+              ))
             ],
           ),
         ),
