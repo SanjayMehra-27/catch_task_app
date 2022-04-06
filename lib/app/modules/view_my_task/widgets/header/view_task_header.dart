@@ -10,8 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
-class TaskDetailsHeaderWidget extends StatelessWidget {
-  const TaskDetailsHeaderWidget({
+class ViewMyTaskHeaderWidget extends StatelessWidget {
+  const ViewMyTaskHeaderWidget({
     Key? key,
     required this.task,
   }) : super(key: key);

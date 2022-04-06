@@ -1,7 +1,9 @@
 import 'package:catch_task_app/app/modules/browse_task/controllers/browse_task_controller.dart';
-import 'package:catch_task_app/app/modules/browse_task/widgets/task_tile/task_tile.dart';
 import 'package:catch_task_app/app/modules/my_task/controllers/my_task_controller.dart';
 import 'package:catch_task_app/app/modules/my_task/widgets/sort_by/sort_by_widget.dart';
+import 'package:catch_task_app/app/modules/view_my_task/bindings/view_my_task_binding.dart';
+import 'package:catch_task_app/app/modules/view_my_task/views/view_my_task_view.dart';
+import 'package:catch_task_app/app/widgets/task_tile/task_tile.dart';
 import 'package:catch_task_app/app/widgets/values/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -24,11 +26,15 @@ class MyTaskPage extends StatelessWidget {
         // backgroundColor: AppColors.appBarTextColor,
         elevation: 0,
         title: Obx(() => AnimatedCrossFade(
-          crossFadeState: myTaskController.selectedSortBy.index  == 0 ? CrossFadeState.showSecond: CrossFadeState.showFirst,
-          duration: const Duration(milliseconds: 600),
-          firstChild: Text('Poster', style: Theme.of(context).textTheme.headline6),
-          secondChild: Text('Tasker', style: Theme.of(context).textTheme.headline6),
-          )),
+              crossFadeState: myTaskController.selectedSortBy.index == 0
+                  ? CrossFadeState.showSecond
+                  : CrossFadeState.showFirst,
+              duration: const Duration(milliseconds: 600),
+              firstChild:
+                  Text('Poster', style: Theme.of(context).textTheme.headline6),
+              secondChild:
+                  Text('Tasker', style: Theme.of(context).textTheme.headline6),
+            )),
         centerTitle: true,
       ),
       body: SafeArea(
@@ -77,6 +83,13 @@ class MyTaskPage extends StatelessWidget {
                     scrollDirection: Axis.vertical,
                     itemBuilder: (context, index) => TaskTile(
                           task: browseTaskController.tasks[index],
+                          onTap: () {
+                            Get.to(
+                                () => ViewMyTaskPage(task: browseTaskController.tasks[index]),
+                                binding: ViewMyTaskBinding(),
+                                transition: Transition.rightToLeft,
+                                duration: Duration(milliseconds: 500));
+                          },
                         ),
                     separatorBuilder: (context, index) => SizedBox(height: 10),
                     itemCount: browseTaskController.tasks.length),

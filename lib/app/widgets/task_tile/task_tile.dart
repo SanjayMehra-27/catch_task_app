@@ -1,20 +1,22 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:intl/intl.dart';
+
 import 'package:catch_task_app/app/modules/browse_task/controllers/browse_task_controller.dart';
+import 'package:catch_task_app/app/modules/browse_task/model/task/task.model.dart';
 import 'package:catch_task_app/app/modules/task_details/bindings/task_details_binding.dart';
 import 'package:catch_task_app/app/modules/task_details/views/task_details_view.dart';
 import 'package:catch_task_app/app/widgets/values/app_colors.dart';
 import 'package:catch_task_app/app/widgets/values/app_values.dart';
 import 'package:catch_task_app/app/widgets/values/text_styles.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
-import 'package:catch_task_app/app/modules/browse_task/model/task/task.model.dart';
-import 'package:intl/intl.dart';
 
 class TaskTile extends StatelessWidget {
   final TaskModel task;
+  final Function onTap;
   TaskTile({
     Key? key,
     required this.task,
+    required this.onTap,
   }) : super(key: key);
 
   BrowseTaskController browseTaskController = Get.find();
@@ -111,7 +113,7 @@ class TaskTile extends StatelessWidget {
         ],
       ),
       onTap: () {
-       Get.to(() => TaskDetailsPage(task: task), binding: TaskDetailsBinding(),transition: Transition.rightToLeft, duration: Duration(milliseconds: 500));
+       onTap();
       },
     );
   }

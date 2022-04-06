@@ -1,6 +1,7 @@
 import 'package:catch_task_app/app/modules/browse_task/controllers/browse_task_controller.dart';
-import 'package:catch_task_app/app/modules/browse_task/model/task/task.model.dart';
-import 'package:catch_task_app/app/modules/browse_task/widgets/task_tile/task_tile.dart';
+import 'package:catch_task_app/app/modules/task_details/bindings/task_details_binding.dart';
+import 'package:catch_task_app/app/modules/task_details/views/task_details_view.dart';
+import 'package:catch_task_app/app/widgets/task_tile/task_tile.dart';
 import 'package:catch_task_app/app/widgets/values/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -84,7 +85,13 @@ class BrowseTaskPage extends StatelessWidget {
                     shrinkWrap: true,
                     scrollDirection: Axis.vertical,
                     itemBuilder: (context, index) => TaskTile(
-                          task: browseTaskController.tasks[index],
+                          task: browseTaskController.tasks[index], 
+                          onTap: () {
+                            Get.to(() => TaskDetailsPage(task: browseTaskController.tasks[index]),
+                                binding: TaskDetailsBinding(),
+                                transition: Transition.rightToLeft,
+                                duration: Duration(milliseconds: 500));
+                          },
                         ),
                     separatorBuilder: (context, index) => SizedBox(height: 10),
                     itemCount: browseTaskController.tasks.length),
