@@ -27,6 +27,7 @@ class HeaderLayout extends StatelessWidget {
           bottomRight: Radius.circular(30),
         ),
       ),
+      child: child,
     );
   }
 }

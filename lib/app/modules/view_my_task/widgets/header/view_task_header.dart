@@ -6,6 +6,7 @@ import 'package:catch_task_app/app/widgets/buttons/rounded/primary_rounded_btn.d
 import 'package:catch_task_app/app/widgets/values/app_colors.dart';
 import 'package:catch_task_app/app/widgets/values/text_styles.dart';
 import 'package:catch_task_app/app/widgets/widget/labels/label_value_pair/label_value_pair_widget.dart';
+import 'package:catch_task_app/app/widgets/widget/labels/widget-key-value-pair/label_value_pair_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -25,74 +26,52 @@ class ViewMyTaskHeaderWidget extends StatelessWidget {
     return HeaderLayout(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           // todo: Bottom Rounded Container [task details]
-          Text('${task.title.capitalizeFirst}',
-              textAlign: TextAlign.start,
-              style: boldTitleWhiteStyle.copyWith(fontSize: 25)),
+          Text('${task.title.capitalizeFirst}',textAlign: TextAlign.start,style: boldTitleWhiteStyle.copyWith(fontSize: 30)),
+              Text('Electrician',
+                  textAlign: TextAlign.start,style: boldTitleWhiteStyle.copyWith(fontSize: 16, fontWeight: FontWeight.w300)),
+          SizedBox(height: Get.height * 0.03),
+          // LabelValuePairWidget2(
+          //   label: LabelValuePairWidget(
+          //     spacing: 0,
+          //     mainAxisAlignment: MainAxisAlignment.spaceAround,
+          //     labelType: LabelType.INLINE,
+          //     label: 
+          //     value: '${task.user.name}',
+          //   ),
+          //   value: 
+         
+          // ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('Task Budget : ₹ ${task.budget}',
-                  textAlign: TextAlign.start,
-                  style: boldTitleWhiteStyle.copyWith(
-                      fontSize: 16, fontWeight: FontWeight.w500)),
-              PrimaryButton(
-                labelText: 'Make Offer',
-                color: AppColors.appYellow,
-                width: Get.width * 0.35,
-                height: Get.height * 0.05,
-                fontSize: 16,
-                onTap: () => Get.to(
-                    MakeOfferDialog(
-                      bidPrice: task.budget,
-                      onConfirm: (bidPrice) {
-                        taskDetailsController.confirmOfferDialog(bidPrice);
-          
-                      },
-                    ),
-                    transition: Transition.downToUp,
-                    duration: Duration(seconds: 1)),
-              )
-            ],
-          ),
-          SizedBox(height: Get.height * 0.01),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              LabelValuePairWidget(
-                label: CircleAvatar(
-                  backgroundImage: NetworkImage(task.imageUrl ?? ''),
-                  backgroundColor: AppColors.appPrimaryColor,
-                  maxRadius: 25,
-                ),
-                value: '${task.user.name}',
+              Row(
+                children: [
+                  CircleAvatar(
+                        backgroundImage: NetworkImage(task.imageUrl ?? ''),
+                        backgroundColor: AppColors.appPrimaryColor,
+                        maxRadius: 25,
+                      ),
+                  SizedBox(width: Get.width * 0.02),
+                  Text("${task.user.name}",style: boldTitleWhiteStyle.copyWith(fontSize: 16, fontWeight: FontWeight.w500)),
+                ],
               ),
-              LabelValuePairWidget(
-                label: Icon(
-                  Icons.calendar_today,
-                  size: 40,
-                  color: AppColors.appWhite01,
-                ),
-                value: '${DateFormat('EEE, dd MMM').format(task.dateTime)}',
-              ),
-              LabelValuePairWidget(
-                label: Icon(
-                  Icons.open_in_browser,
-                  size: 40,
-                  color: AppColors.appWhite01,
-                ),
-                value: '${task.status.name.capitalizeFirst}',
-              ),
-              LabelValuePairWidget(
-                label: Icon(
-                  Icons.card_giftcard,
-                  size: 40,
-                  color: AppColors.appWhite01,
-                ),
-                value: '${task.offersCount} Offers',
-              ),
+          PrimaryButton(
+            child: LabelValuePairWidget(
+              spacing: 0,
+              crossAxisAlignment : CrossAxisAlignment.center,
+              labelType: LabelType.TOP_DOWN,
+              label: Text("Pay ₹ ${task.budget}".toUpperCase(),style: boldTitleWhiteStyle.copyWith(fontSize: 18, fontWeight: FontWeight.bold, color: AppColors.textColorPrimary),),
+              value: 'Release Payment',
+              valueStyle: boldTitleWhiteStyle.copyWith(fontSize: 16, fontWeight: FontWeight.w500, color: AppColors.appGreen),
+            ),
+            height: Get.height * 0.07,
+            width: Get.width * 0.45,
+            color: AppColors.white,
+            shape: ButtonShape.RECTANGLE,
+            ),
             ],
           ),
         ],

@@ -23,9 +23,14 @@ class ViewMyTaskPage extends StatelessWidget {
       extendBody: true,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        backgroundColor: AppColors.appPrimaryColor,
         elevation: 0,
-        centerTitle: true,
+        backgroundColor: AppColors.appPrimaryColor,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.more_vert_outlined, color: AppColors.appWhite01),
+            onPressed: () {}
+          ),
+        ],  
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: AppColors.appWhite01),
           onPressed: () => Get.back(),
@@ -36,10 +41,10 @@ class ViewMyTaskPage extends StatelessWidget {
           // crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             //! Header
-            Expanded(flex: 3, child: ViewMyTaskHeaderWidget(task: task)),
+            Expanded(flex: 4, child: ViewMyTaskHeaderWidget(task: task)),
 
             // ! Body
-            Expanded(flex: 8, child: ViewMyTasKBodyWidget(task: task)),
+            Expanded(flex: 12, child: ViewMyTasKBodyWidget(task: task)),
           ],
         ),
       ),
