@@ -1,7 +1,7 @@
 import 'package:catch_task_app/app/layout/header_layout/header_layout.dart';
 import 'package:catch_task_app/app/modules/browse_task/model/task/task.model.dart';
 import 'package:catch_task_app/app/modules/task_details/controllers/task_details_controller.dart';
-import 'package:catch_task_app/app/modules/task_details/widgets/make-offer-dialog/make_offer_dialog.dart';
+import 'package:catch_task_app/app/modules/view_my_task/controllers/view_my_task_controller.dart';
 import 'package:catch_task_app/app/widgets/buttons/rounded/primary_rounded_btn.dart';
 import 'package:catch_task_app/app/widgets/values/app_colors.dart';
 import 'package:catch_task_app/app/widgets/values/text_styles.dart';
@@ -9,7 +9,6 @@ import 'package:catch_task_app/app/widgets/widget/labels/label_value_pair/label_
 import 'package:catch_task_app/app/widgets/widget/labels/widget-key-value-pair/label_value_pair_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
 
 class ViewMyTaskHeaderWidget extends StatelessWidget {
   const ViewMyTaskHeaderWidget({
@@ -20,6 +19,7 @@ class ViewMyTaskHeaderWidget extends StatelessWidget {
   final TaskModel task;
 
   TaskDetailsController get taskDetailsController => Get.find<TaskDetailsController>();
+  ViewMyTaskController get viewMyTaskController => Get.find<ViewMyTaskController>();
 
   @override
   Widget build(BuildContext context) {
@@ -59,6 +59,9 @@ class ViewMyTaskHeaderWidget extends StatelessWidget {
                 ],
               ),
           PrimaryButton(
+            onTap: () {
+              viewMyTaskController.releasePaymentDialog();
+            },
             child: LabelValuePairWidget(
               spacing: 0,
               crossAxisAlignment : CrossAxisAlignment.center,

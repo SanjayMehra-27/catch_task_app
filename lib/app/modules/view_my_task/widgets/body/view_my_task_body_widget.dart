@@ -1,14 +1,20 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:readmore/readmore.dart';
+
+import 'package:catch_task_app/app/modules/browse_task/model/offer-received/offer_received.dart';
 import 'package:catch_task_app/app/modules/browse_task/model/task/task.model.dart';
+import 'package:catch_task_app/app/modules/browse_task/model/user/user.model.dart';
 import 'package:catch_task_app/app/widgets/buttons/rounded/primary_rounded_btn.dart';
 import 'package:catch_task_app/app/widgets/timeline/time_line.dart';
+import 'package:catch_task_app/app/widgets/times-ago/times_ago.dart';
 import 'package:catch_task_app/app/widgets/values/app_colors.dart';
 import 'package:catch_task_app/app/widgets/values/text_styles.dart';
 import 'package:catch_task_app/app/widgets/widget/containers/ct_container/ct_container.dart';
 import 'package:catch_task_app/app/widgets/widget/covid19/covid19_warning_widget.dart';
+import 'package:catch_task_app/app/widgets/widget/labels/label_value_pair/label_value_pair_widget.dart';
+import 'package:catch_task_app/app/widgets/widget/labels/widget-key-value-pair/label_value_pair_widget.dart';
 import 'package:catch_task_app/app/widgets/widget/offer-received-card/offer-received-card.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:readmore/readmore.dart';
 
 class ViewMyTasKBodyWidget extends StatelessWidget {
   const ViewMyTasKBodyWidget({
@@ -266,29 +272,189 @@ class ViewMyTasKBodyWidget extends StatelessWidget {
 
             SizedBox(height: 20),
 
-            // todo: Offers Received
-            Text(
-              'Offers Received',
-              style: boldTitleWhiteStyle.copyWith(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16,
-                  color: AppColors.appGrey),
-            ),
+            CTContainer(
+                child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // todo: Offers Received
+                Text(
+                  'Offers Received (5)',
+                  style: boldTitleWhiteStyle.copyWith(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                      color: AppColors.textColorPrimary),
+                ),
 
-            SizedBox(height: 10),
-            ListView.separated(
-              physics: NeverScrollableScrollPhysics(),
-              itemBuilder: (context, index) => OfferReceivedCard(
-                offer: task.offers[index],
-              ),
-              separatorBuilder: (context, index) => SizedBox(
-                height: 10,
-              ),
-              itemCount: task.offers.length,
-              shrinkWrap: true,
-            ),
+                SizedBox(height: 10),
+                ListView.separated(
+                  physics: NeverScrollableScrollPhysics(),
+                  itemBuilder: (context, index) => OfferReceivedUserCard(
+                    offer: task.offers[index],
+                  ),
+                  separatorBuilder: (context, index) => SizedBox(
+                    height: 10,
+                  ),
+                  itemCount: task.offers.length,
+                  shrinkWrap: true,
+                ),
+              ],
+            ))
           ],
         ),
+      ),
+    );
+  }
+}
+
+class OfferReceivedUserCard extends StatelessWidget {
+  final OfferReceived offer;
+  OfferReceivedUserCard({
+    Key? key,
+    required this.offer,
+  }) : super(key: key);
+
+  final TextStyle subtitleTextStyle = boldTitleWhiteStyle.copyWith(
+      fontWeight: FontWeight.w500, fontSize: 14, color: AppColors.appGrey);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: ListTile(
+        leading: CircleAvatar(
+          backgroundImage: NetworkImage(
+            'https://picsum.photos/250?image=9',
+          ),
+        ),
+        title: Row(
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  '${offer.userName}',
+                  style: boldTitleWhiteStyle.copyWith(
+                      fontWeight: FontWeight.w700,
+                      fontSize: 16,
+                      color: AppColors.textColorPrimary),
+                ),
+                Text(
+                  'Software Engineer',
+                  style: subtitleTextStyle,
+                ),
+              ],
+            ),
+            SizedBox(width: 10, height: 0),
+            CTUserRoleChip(
+              role: UserRole.TASKER,
+            )
+          ],
+        ),
+        subtitle: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('${offer.price}', style: subtitleTextStyle),
+            ReadMoreText('${offer.message}',
+                trimLines: 4,
+                colorClickableText: Colors.blue,
+                trimMode: TrimMode.Line,
+                trimCollapsedText: 'Read more',
+                trimExpandedText: 'less',
+                moreStyle: boldTitleWhiteStyle.copyWith(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 16,
+                  color: Colors.blue,
+                ),
+                lessStyle: subtitleTextStyle.copyWith(
+                  fontWeight: FontWeight.w500,
+                  color: Colors.blue,
+                ),
+                style: subtitleTextStyle),
+          ],
+        ),
+        trailing: Text('Rebid',
+            textAlign: TextAlign.right,
+            style: boldTitleWhiteStyle.copyWith(
+                fontWeight: FontWeight.w700,
+                fontSize: 14,
+                color: AppColors.appYellow)),
+      ),
+
+      // Column(
+      //   crossAxisAlignment: CrossAxisAlignment.start,
+      //   children: [
+      //     LabelValuePairWidget2(
+      //       crossAxisAlignment: CrossAxisAlignment.center,
+      //       label: Text(
+      //         '${offer.userName}',
+      //         style: boldTitleWhiteStyle.copyWith(
+      //             fontWeight: FontWeight.w500,
+      //             fontSize: 16,
+      //             color: AppColors.textColorPrimary),
+      //       ),
+      //       value: IconButton(
+      //         icon: Icon(
+      //           Icons.more_horiz,
+      //           color: AppColors.appPrimaryColor,
+      //         ),
+      //         onPressed: () {},
+      //       ),
+      //     ),
+      //     ReadMoreText('${offer.message}',
+      //         trimLines: 4,
+      //         colorClickableText: Colors.blue,
+      //         trimMode: TrimMode.Line,
+      //         trimCollapsedText: 'Read more',
+      //         trimExpandedText: 'less',
+      //         moreStyle: boldTitleWhiteStyle.copyWith(
+      //           fontWeight: FontWeight.w500,
+      //           fontSize: 16,
+      //           color: Colors.blue,
+      //         ),
+      //         lessStyle: boldTitleWhiteStyle.copyWith(
+      //           fontWeight: FontWeight.w500,
+      //           fontSize: 16,
+      //           color: Colors.blue,
+      //         ),
+      //         style: boldTitleWhiteStyle.copyWith(
+      //             fontWeight: FontWeight.w500,
+      //             fontSize: 16,
+      //             color: AppColors.appGrey)),
+      //   ],
+      // ),
+    );
+  }
+}
+enum UserRole {
+  TASKER,
+  POSTER
+}
+class CTUserRoleChip extends StatelessWidget {
+  const CTUserRoleChip({
+    Key? key,
+    this.role = UserRole.TASKER,
+  }) : super(key: key);
+
+  final UserRole? role;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      alignment: Alignment.topCenter,
+      padding: EdgeInsets.symmetric(
+        horizontal: 12,
+        vertical: 5,
+      ),
+      decoration: BoxDecoration(
+        color: AppColors.appYellow.withOpacity(0.4),
+        borderRadius: BorderRadius.circular(30),
+      ),
+      child: Text(
+        role == UserRole.TASKER ? 'Tasker' : 'Poster',
+        style: boldTitleWhiteStyle.copyWith(
+            fontWeight: FontWeight.w500,
+            fontSize: 10,
+            color: AppColors.textColorPrimary),
       ),
     );
   }
