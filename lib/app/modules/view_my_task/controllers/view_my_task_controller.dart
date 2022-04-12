@@ -1,3 +1,4 @@
+import 'package:catch_task_app/app/modules/view_my_task/views/release_payment_view.dart';
 import 'package:catch_task_app/app/routes/app_routes.dart';
 import 'package:catch_task_app/app/widgets/alert_dialog/alert_dialog.dart';
 import 'package:catch_task_app/app/widgets/buttons/rounded/primary_rounded_btn.dart';
@@ -32,13 +33,12 @@ class ViewMyTaskController extends GetxController {
               labelText: 'Yes',
               color: AppColors.appPrimaryColor,
               onTap: () {
-                Get.back();
+               Get.to(ReleasePaymentView(), transition: Transition.rightToLeft, duration: Duration(milliseconds: 500));
               }),
             
         ],
         headerImage: "assets/images/release_payment@test.png",
       ),
-      barrierDismissible: false,
     );
   }
 }

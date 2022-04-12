@@ -1,3 +1,4 @@
+import 'package:catch_task_app/app/widgets/widget/need_help/need_help_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:readmore/readmore.dart';
@@ -146,25 +147,9 @@ class ViewMyTasKBodyWidget extends StatelessWidget {
                 margin: EdgeInsets.only(
                   top: 20,
                 ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'If you have facing any issues\nKindly contact us at',
-                      softWrap: false,
-                      overflow: TextOverflow.ellipsis,
-                      style: boldTitleWhiteStyle.copyWith(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 14,
-                          color: AppColors.textColorPrimary),
-                    ),
-                    PrimaryButton(
-                      width: 120,
-                      shape: ButtonShape.RECTANGLE,
-                      height: 40,
-                      labelText: 'Need help ?',
-                    )
-                  ],
+                child: 
+                NeedHelpWidget(
+                  message: 'If you have facing any issues\nKindly contact us at',
                 )),
 
             // todo: Task Description
@@ -305,6 +290,7 @@ class ViewMyTasKBodyWidget extends StatelessWidget {
     );
   }
 }
+
 
 class OfferReceivedUserCard extends StatelessWidget {
   final OfferReceived offer;
