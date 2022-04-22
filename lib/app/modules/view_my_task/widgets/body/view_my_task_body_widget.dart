@@ -1,21 +1,16 @@
-import 'package:catch_task_app/app/widgets/widget/need_help/need_help_widget.dart';
+import 'package:catch_task_app/app/widgets/ct_info_card/ct_info_card.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:readmore/readmore.dart';
 
 import 'package:catch_task_app/app/modules/browse_task/model/offer-received/offer_received.dart';
 import 'package:catch_task_app/app/modules/browse_task/model/task/task.model.dart';
-import 'package:catch_task_app/app/modules/browse_task/model/user/user.model.dart';
-import 'package:catch_task_app/app/widgets/buttons/rounded/primary_rounded_btn.dart';
 import 'package:catch_task_app/app/widgets/timeline/time_line.dart';
-import 'package:catch_task_app/app/widgets/times-ago/times_ago.dart';
 import 'package:catch_task_app/app/widgets/values/app_colors.dart';
 import 'package:catch_task_app/app/widgets/values/text_styles.dart';
 import 'package:catch_task_app/app/widgets/widget/containers/ct_container/ct_container.dart';
 import 'package:catch_task_app/app/widgets/widget/covid19/covid19_warning_widget.dart';
-import 'package:catch_task_app/app/widgets/widget/labels/label_value_pair/label_value_pair_widget.dart';
-import 'package:catch_task_app/app/widgets/widget/labels/widget-key-value-pair/label_value_pair_widget.dart';
-import 'package:catch_task_app/app/widgets/widget/offer-received-card/offer-received-card.dart';
+import 'package:catch_task_app/app/widgets/widget/need_help/need_help_widget.dart';
 
 class ViewMyTasKBodyWidget extends StatelessWidget {
   const ViewMyTasKBodyWidget({
@@ -42,94 +37,58 @@ class ViewMyTasKBodyWidget extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                CTContainer(
-                  color: Colors.white70,
-                  margin: EdgeInsets.only(
-                    top: 20,
+                CTInfoCard(
+                  primaryIcon: Icon(
+                    Icons.calendar_today,
+                    color: AppColors.textColorPrimary,
+                    size: 20,
                   ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Icon(
-                        Icons.calendar_today,
-                        color: AppColors.textColorPrimary,
-                        size: 20,
-                      ),
-                      Text(
-                        'Due Date',
-                        style: boldTitleWhiteStyle.copyWith(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                            color: AppColors.textColorPrimary),
-                      ),
-                      Text(
-                        'Fri, Jun 20, 2021\nEvening (4:00 PM - 6:00 PM)',
-                        style: boldTitleWhiteStyle.copyWith(
-                            fontWeight: FontWeight.w400,
-                            fontSize: 12,
-                            color: AppColors.textColorPrimary),
-                      ),
-                    ],
+                  primaryText: "Due Date",
+                  subtitleText1: Text(
+                    'Fri, Jun 20, 2021\nEvening (4:00 PM - 6:00 PM)',
+                    style: boldTitleWhiteStyle.copyWith(
+                        fontWeight: FontWeight.w400,
+                        fontSize: 12,
+                        color: AppColors.textColorPrimary),
                   ),
                 ),
-                CTContainer(
-                  color: Colors.white70,
-                  margin: EdgeInsets.only(
-                    top: 20,
+                CTInfoCard(
+                  primaryIcon: Icon(
+                    Icons.lock,
+                    color: AppColors.textColorPrimary,
+                    size: 20,
                   ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  secondaryIcon: Image.asset(
+                    'assets/images/catchTaskPay@test.png',
+                    height: 20,
+                    width: 100,
+                    alignment: Alignment.topRight,
+                  ),
+                  primaryText: 'Payments Terms',
+                  subtitleText1: Text(
+                    'CatchTask PAY',
+                    style: boldTitleWhiteStyle.copyWith(
+                        fontWeight: FontWeight.w400,
+                        fontSize: 12,
+                        color: AppColors.textColorPrimary),
+                  ),
+                  subtitleText2: Row(
                     children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Icon(
-                            Icons.lock,
-                            color: AppColors.textColorPrimary,
-                            size: 20,
-                          ),
-                          Image.asset(
-                            'assets/images/catchTaskPay@test.png',
-                            height: 20,
-                            width: 100,
-                            alignment: Alignment.topRight,
-                            // color: AppColors.white,
-                          ),
-                        ],
+                      Icon(
+                        Icons.check_circle,
+                        color: AppColors.appGreen,
+                        size: 16,
+                      ),
+                      SizedBox(
+                        width: 5,
                       ),
                       Text(
-                        'Payments Terms',
-                        style: boldTitleWhiteStyle.copyWith(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                            color: AppColors.textColorPrimary),
-                      ),
-                      Text(
-                        'CatchTask PAY',
+                        'Secure',
+                        textAlign: TextAlign.right,
                         style: boldTitleWhiteStyle.copyWith(
                             fontWeight: FontWeight.w400,
                             fontSize: 12,
-                            color: AppColors.textColorPrimary),
-                      ),
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.check_circle,
-                            color: AppColors.appGreen,
-                            size: 16,
-                          ),
-                          SizedBox(
-                            width: 5,
-                          ),
-                          Text(
-                            'Secure',
-                            textAlign: TextAlign.right,
-                            style: boldTitleWhiteStyle.copyWith(
-                                fontWeight: FontWeight.w400,
-                                fontSize: 12,
-                                color: AppColors.appGreen),
-                          ),
-                        ],
+                            color: AppColors.appGreen),
                       ),
                     ],
                   ),
@@ -147,9 +106,9 @@ class ViewMyTasKBodyWidget extends StatelessWidget {
                 margin: EdgeInsets.only(
                   top: 20,
                 ),
-                child: 
-                NeedHelpWidget(
-                  message: 'If you have facing any issues\nKindly contact us at',
+                child: NeedHelpWidget(
+                  message:
+                      'If you have facing any issues\nKindly contact us at',
                 )),
 
             // todo: Task Description
@@ -411,10 +370,9 @@ class OfferReceivedUserCard extends StatelessWidget {
     );
   }
 }
-enum UserRole {
-  TASKER,
-  POSTER
-}
+
+enum UserRole { TASKER, POSTER }
+
 class CTUserRoleChip extends StatelessWidget {
   const CTUserRoleChip({
     Key? key,
