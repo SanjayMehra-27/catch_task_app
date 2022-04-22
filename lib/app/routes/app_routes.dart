@@ -6,4 +6,5 @@ class AppRoutes {
   static const LOGIN = '/login';
   static const FORGOT_PASSWORD = '/forgot-password';
   static const PAGE_NOT_FOUND = '/page-not-found';
+  static const SUPPORTS = '/suports';
 }

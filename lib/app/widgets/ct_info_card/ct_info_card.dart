@@ -1,7 +1,8 @@
+import 'package:flutter/material.dart';
+
 import 'package:catch_task_app/app/widgets/values/app_colors.dart';
 import 'package:catch_task_app/app/widgets/values/text_styles.dart';
 import 'package:catch_task_app/app/widgets/widget/containers/ct_container/ct_container.dart';
-import 'package:flutter/material.dart';
 
 class CTInfoCard extends StatelessWidget {
   const CTInfoCard({
@@ -11,18 +12,29 @@ class CTInfoCard extends StatelessWidget {
     this.secondaryIcon,
     this.subtitleText1,
     this.subtitleText2,
+    this.backgroundColor,
+    this.width,
+    this.height,
+    this.padding,
   }) : super(key: key);
 
-  final Icon primaryIcon;
+  final Widget primaryIcon;
   final String primaryText;
   final Widget? secondaryIcon;
   final Widget? subtitleText1;
   final Widget? subtitleText2;
+  final Color? backgroundColor;
+  final double? width;
+  final double? height;
+  final EdgeInsets? padding;
 
   @override
   Widget build(BuildContext context) {
     return CTContainer(
-      color: Colors.white70,
+      height: height,
+      width: width,
+      padding: padding,
+      color: backgroundColor ?? Colors.white70,
       margin: EdgeInsets.only(
         top: 20,
       ),
