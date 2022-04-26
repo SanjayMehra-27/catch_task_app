@@ -18,7 +18,7 @@ class TaskModel {
   final List<OfferReceived> offers;
   TaskModel({
     required this.id,
-    required this.title,
+    required this.title,  
     this.description,
     required this.category,
     this.imageUrl,

@@ -18,6 +18,7 @@ class SupportPage extends StatelessWidget {
             icon: Icon(Icons.arrow_back),
             onPressed: () => Get.back(),
           ),
+          centerTitle: false,
           title: Text('Supports'),
         ),
         body: Container(
