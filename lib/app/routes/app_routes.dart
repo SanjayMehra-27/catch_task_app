@@ -8,4 +8,5 @@ class AppRoutes {
   static const PAGE_NOT_FOUND = '/page-not-found';
   static const SUPPORTS = '/suports';
   static const CANCELLATION = '/cancellation';
+  static const TASK_SUBMISSION = '/task-submission';
 }

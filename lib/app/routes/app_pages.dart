@@ -8,10 +8,12 @@ import 'package:catch_task_app/app/modules/my_task/bindings/my_task_binding.dart
 import 'package:catch_task_app/app/modules/my_task/views/my_task_view.dart';
 import 'package:catch_task_app/app/modules/support/bindings/support_binding.dart';
 import 'package:catch_task_app/app/modules/support/views/support_view.dart';
+import 'package:catch_task_app/app/modules/task-submission/views/task_submission_view.dart';
+import 'package:catch_task_app/app/modules/task_details/bindings/task_details_binding.dart';
 import 'package:catch_task_app/app/routes/app_routes.dart';
 import 'package:get/get.dart';
 class AppPages {
-  static const INITIAL = AppRoutes.CANCELLATION;
+  static const INITIAL = AppRoutes.TASK_SUBMISSION;
 
   static final routes = [
     GetPage(
@@ -38,6 +40,11 @@ class AppPages {
       name: AppRoutes.CANCELLATION,
       page: () => CancellationView(),
       binding: CancellationBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.TASK_SUBMISSION,
+      page: () => TaskSubmissionView(),
+      binding: TaskDetailsBinding(),
     ),
   ];
 }
