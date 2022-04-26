@@ -1,20 +1,19 @@
 import 'package:catch_task_app/app/modules/browse_task/model/task/task.model.dart';
-import 'package:catch_task_app/app/modules/cancellation/views/cancellation_view.dart';
 import 'package:catch_task_app/app/widgets/task-status-chips/task_status_chip.dart';
 import 'package:catch_task_app/app/widgets/values/app_colors.dart';
 import 'package:catch_task_app/app/widgets/values/text_styles.dart';
-import 'package:catch_task_app/app/widgets/widget/containers/ct_container/ct_container.dart';
 import 'package:flutter/material.dart';
 
-class TaskInfoCard extends StatelessWidget {
-  const TaskInfoCard({
-    Key? key,
+class UserTaskInfoCard extends StatelessWidget {
+  const UserTaskInfoCard({
+    Key? key, 
+    required this.task,
   }) : super(key: key);
+  final TaskModel task;
 
   @override
   Widget build(BuildContext context) {
-    return CTContainer(
-        child: Column(
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
@@ -34,7 +33,7 @@ class TaskInfoCard extends StatelessWidget {
               backgroundImage: NetworkImage(
                   'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'),
               backgroundColor: AppColors.appPrimaryColor,
-              maxRadius: 35,
+              maxRadius: 30,
             ),
             SizedBox(width: 12),
             Column(
@@ -49,6 +48,6 @@ class TaskInfoCard extends StatelessWidget {
           ],
         ),
       ],
-    ));
+    );
   }
 }

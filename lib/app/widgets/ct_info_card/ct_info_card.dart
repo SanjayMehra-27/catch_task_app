@@ -16,6 +16,7 @@ class CTInfoCard extends StatelessWidget {
     this.width,
     this.height,
     this.padding,
+    this.decoration,
   }) : super(key: key);
 
   final Widget primaryIcon;
@@ -27,6 +28,7 @@ class CTInfoCard extends StatelessWidget {
   final double? width;
   final double? height;
   final EdgeInsets? padding;
+   final Decoration? decoration;
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +37,7 @@ class CTInfoCard extends StatelessWidget {
       width: width,
       padding: padding,
       color: backgroundColor ?? Colors.white70,
+      decoration: decoration,
       margin: EdgeInsets.only(
         top: 20,
       ),

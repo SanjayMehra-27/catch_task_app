@@ -1,10 +1,12 @@
-import 'package:catch_task_app/app/widgets/ct_info_card/ct_info_card.dart';
+import 'package:catch_task_app/app/widgets/due_date%20card/due_date_card.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:readmore/readmore.dart';
 
 import 'package:catch_task_app/app/modules/browse_task/model/offer-received/offer_received.dart';
 import 'package:catch_task_app/app/modules/browse_task/model/task/task.model.dart';
+import 'package:catch_task_app/app/modules/create_task/widgets/task_date_time/enter_task_date_time_widget.dart';
+import 'package:catch_task_app/app/widgets/ct_info_card/ct_info_card.dart';
 import 'package:catch_task_app/app/widgets/timeline/time_line.dart';
 import 'package:catch_task_app/app/widgets/values/app_colors.dart';
 import 'package:catch_task_app/app/widgets/values/text_styles.dart';
@@ -37,20 +39,9 @@ class ViewMyTasKBodyWidget extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                CTInfoCard(
-                  primaryIcon: Icon(
-                    Icons.calendar_today,
-                    color: AppColors.textColorPrimary,
-                    size: 20,
-                  ),
-                  primaryText: "Due Date",
-                  subtitleText1: Text(
-                    'Fri, Jun 20, 2021\nEvening (4:00 PM - 6:00 PM)',
-                    style: boldTitleWhiteStyle.copyWith(
-                        fontWeight: FontWeight.w400,
-                        fontSize: 12,
-                        color: AppColors.textColorPrimary),
-                  ),
+                DueDateCard(
+                  dueDate: task.dateTime,
+                  dayPeriod: dayPeriods[0],
                 ),
                 CTInfoCard(
                   primaryIcon: Icon(
@@ -249,6 +240,8 @@ class ViewMyTasKBodyWidget extends StatelessWidget {
     );
   }
 }
+
+
 
 
 class OfferReceivedUserCard extends StatelessWidget {
