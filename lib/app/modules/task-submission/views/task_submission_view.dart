@@ -1,4 +1,5 @@
 import 'package:catch_task_app/app/modules/create_task/widgets/task_date_time/enter_task_date_time_widget.dart';
+import 'package:catch_task_app/app/modules/task-submission/views/tasksubmit_view.dart';
 import 'package:catch_task_app/app/widgets/buttons/rounded/primary_rounded_btn.dart';
 import 'package:catch_task_app/app/widgets/ct_info_card/ct_info_card.dart';
 import 'package:catch_task_app/app/widgets/due_date%20card/due_date_card.dart';
@@ -95,6 +96,9 @@ class TaskSubmissionView extends GetView<TaskSubmissionController> {
           SizedBox(height: 20),
           PrimaryButton(
             child: Text('Submit Task & Request Payment'),
+            onTap: () {
+              Get.to(TaskSubmitView());
+            },
           )
         ]),
       ),

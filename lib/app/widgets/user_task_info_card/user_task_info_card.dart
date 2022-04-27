@@ -21,7 +21,7 @@ class UserTaskInfoCard extends StatelessWidget {
             Text('Fri,23 July 2021', style: cardSmallTagStyle),
             SizedBox(width: 10),
             StatusChip(
-              status: TaskStatus.ASSIGNED,
+              status: task.status,
             )
           ],
         ),

@@ -1,8 +1,9 @@
-import 'package:catch_task_app/app/modules/browse_task/model/task/task.model.dart';
-import 'package:catch_task_app/app/widgets/values/app_colors.dart';
-import 'package:catch_task_app/app/widgets/values/text_styles.dart';
+import 'package:catch_task_app/app/widgets/widget/ct_chip/ct_chip.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import 'package:catch_task_app/app/modules/browse_task/model/task/task.model.dart';
+import 'package:catch_task_app/app/widgets/values/app_colors.dart';
 
 class StatusChip extends StatelessWidget {
   const StatusChip({
@@ -12,14 +13,9 @@ class StatusChip extends StatelessWidget {
   final TaskStatus status;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(5),
-        color: getTaskStatusColor(status: status),
-      ),
-      child: Text('${status.name.capitalizeFirst}', style: cardSmallTagStyle),
-    );
+    return CtChip(
+      color: getTaskStatusColor(status: status),
+      text: status.name.capitalizeFirst.toString());
   }
 }
 
